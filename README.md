@@ -1,2 +1,2 @@
 # experiment
-this project is suc
+this project is su
