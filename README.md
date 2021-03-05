@@ -1,2 +1,2 @@
 # experiment
-this project is succ
+this project is suc
