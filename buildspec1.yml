@@ -9,13 +9,13 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image..   
-      - docker build -t webapp .
-      - docker tag webapp:latest public.ecr.aws/s2w0a4i5/webapp:latest    
+      - docker build -t creativemaster .
+      - docker tag creativemaster:latest public.ecr.aws/s2w0a4i5/creativemaster:latest    
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image..
-      - docker push public.ecr.aws/s2w0a4i5/webapp:latest
+      - docker push public.ecr.aws/s2w0a4i5/creativemaster:latest
       - printf '{"name":"test","ImageURI":"844403568518.dkr.ecr.ca-central-1.amazonaws.com/htmlreg:latest"}' > imagedefinitions.json
       - cat imagedefinitions.json 
 artifacts:
