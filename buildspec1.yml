@@ -4,18 +4,18 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region ca-central-1 | docker login --username AWS --password-stdin 844403568518.dkr.ecr.ca-central-1.amazonaws.com
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s2w0a4i5
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image..   
-      - docker build -t htmlreg .
-      - docker tag htmlreg:latest 844403568518.dkr.ecr.ca-central-1.amazonaws.com/htmlreg:latest    
+      - docker build -t webapp .
+      - docker tag webapp:latest public.ecr.aws/s2w0a4i5/webapp:latest    
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image..
-      - docker push 844403568518.dkr.ecr.ca-central-1.amazonaws.com/htmlreg:latest
+      - docker push public.ecr.aws/s2w0a4i5/webapp:latest
       - printf '{"name":"test","ImageURI":"844403568518.dkr.ecr.ca-central-1.amazonaws.com/htmlreg:latest"}' > imagedefinitions.json
       - cat imagedefinitions.json 
 artifacts:
